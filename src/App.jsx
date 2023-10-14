@@ -1,16 +1,28 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import Home from './Component/Home/Home'
+import Header from './Component/Header/Header'
+import Courses from './Component/Coursess/Courses'
+import Bookmark from './Component/Bookmark/Bookmark'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-  <Home></Home>
-    
+    <><div className='bg-[#F3F3F3]'>
+      <Header></Header>
+      <div className='flex container mx-auto'>
+        <div>
+          <Courses></Courses>
+        </div>
+        <div>
+          <Bookmark></Bookmark>
+        </div>
+      </div>
+    </div>
+
+
+
+
 
     </>
   )
