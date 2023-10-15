@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaDollarSign, FaCreditCard } from 'react-icons/fa';
-const Course = ({ course }) => {
+const Course = ({ course, handleSelect }) => {
     const { image, title, description, price, credit } = course;
     console.log(course);
     return (
@@ -10,7 +10,7 @@ const Course = ({ course }) => {
             <p className='text-sm text-[#1C1B1B99]'>{description}</p>
             <div className='flex justify-between'>  <p className='flex items-center gap-2'><FaDollarSign />Price: {price}</p>
                 <p className='flex items-center gap-2'><FaCreditCard /> Credit: {credit} hr</p> </div>
-            <button className='bg-blue-500 text-white py-1 rounded-lg'>Select</button>
+            <button onClick={()=>handleSelect()} className='bg-blue-500 text-white py-1 rounded-lg'>Select</button>
         </div>
     );
 };
