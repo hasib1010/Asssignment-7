@@ -9,7 +9,7 @@ const Courses = ({handleSelect}) => {
     }, [])
     
     return (
-        <div className='container mx-auto font-[Inter] grid grid-cols-3 gap-3 mt-5'>
+        <div className='container mx-auto font-[Inter] grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3 mt-5'>
             {
                 courses.map(course=> <Course
                 key={course.id}
