@@ -10,28 +10,16 @@ function App() {
   const [totalCredit, setTotalCredit] = useState(0);
   const [remainCredit, setRemainCredit] = useState(20);
   const handleSelect = (course) => {
-    const isExist = select.find((courseItem) => courseItem.id === course.id);
-    let cost = course.price
-    let courseCredit = course.credit
-    if (isExist) {
-      return alert("Already added")
-    } else {
-      select.forEach((buyingCourse) => {
-        cost += buyingCourse.price;
-        // console.log(cost);
-        setCourseCost(cost);
-      })
-      select.forEach((item) => {
-        courseCredit += item.credit;
-        setTotalCredit(courseCredit)
-        if (courseCredit > 20) {
-          return alert("You can't add more than 20 credit")
-        }
-        const restCredit = 20 - courseCredit;
-        setRemainCredit(restCredit);
-      });
-      const selected = [...select, course];
-      setSelect(selected)
+    if (select.includes(course)){
+      return alert("Item Already added");
+    }
+    
+    if(remainCredit!== 0 && remainCredit>=course.credit){
+      const newSelect= [...select, course];
+      setSelect(newSelect);
+      setRemainCredit(remainCredit-course.credit);
+      setTotalCredit(totalCredit+course.credit);
+      setCourseCost(courseCost+course.price);
     }
   }
   return (
@@ -42,11 +30,11 @@ function App() {
           <Courses handleSelect={handleSelect}></Courses>
         </div>
         <div>
-          <Bookmark 
-          select={select}
-          courseCost={courseCost}
-          remainCredit={remainCredit}
-          totalCredit={totalCredit}
+          <Bookmark
+            select={select}
+            courseCost={courseCost}
+            remainCredit={remainCredit}
+            totalCredit={totalCredit}
           ></Bookmark>
         </div>
       </div>
